@@ -6,7 +6,12 @@ using System.Collections.Generic;
 public class GameModeFSM : MonoBehaviour 
 {
 	private SimpleTouchAreaButton touchPanel;
-	private GJM_StartOptions startOptions;
+	private SimpleTouchAreaButton start;
+	private SimpleTouchAreaButton quitToMain;
+
+	private Animator UIController;
+
+
 
 	[SerializeField] public enum GameStates
 	{
@@ -31,6 +36,11 @@ public class GameModeFSM : MonoBehaviour
 	void Start () 
 	{
 		touchPanel = GameObject.Find("TouchPanel").GetComponent<SimpleTouchAreaButton>();
+		start = GameObject.Find("Start").GetComponent<SimpleTouchAreaButton>();
+		quitToMain = GameObject.Find("QuitToMain").GetComponent<SimpleTouchAreaButton>();
+
+		UIController = GameObject.Find("UI").GetComponent<Animator>();
+
 
 		fsm.Add (GameStates.MainMenu, MainMenuState);
 		fsm.Add (GameStates.PlayGame, PlayGameState);
@@ -58,8 +68,9 @@ public class GameModeFSM : MonoBehaviour
 
 	public void MainMenuState ()
 	{
-		if (Input.GetKeyDown(KeyCode.Return))
+		if (start.CanAccessButtonArea())
 		{
+			UIController.SetTrigger("PlayTriggered");
 			SetState(GameStates.PlayGame);
 		}
 	}
@@ -74,10 +85,12 @@ public class GameModeFSM : MonoBehaviour
 
 	public void PlayGameState ()
 	{
-		if (Input.GetKey(KeyCode.Q))
+		if (quitToMain.CanAccessButtonArea())
 		{
+			UIController.SetTrigger("QuitTriggered");
 			SetState(GameStates.MainMenu);
 		}
+		
 	}
 
 
