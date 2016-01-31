@@ -47,7 +47,9 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\GameModeFSM.cs" />
      <Compile Include="Assets\Scripts\Metronome.cs" />
+     <Compile Include="Assets\Scripts\MetronomeCornerOverride.cs" />
      <Compile Include="Assets\Scripts\PendulumHit.cs" />
+     <Compile Include="Assets\Scripts\ReadingMoves.cs" />
      <Compile Include="Assets\Scripts\SimpleTouchAreaButton.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
