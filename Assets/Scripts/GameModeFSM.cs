@@ -1,13 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
 public class GameModeFSM : MonoBehaviour 
 {
-	private SimpleTouchAreaButton touchPanel;
+	private PendulumHit pendulumHit;
+
 	private SimpleTouchAreaButton start;
 	private SimpleTouchAreaButton quitToMain;
+
+	private Metronome metronome;
 
 	private Animator UIController;
 
@@ -33,9 +37,10 @@ public class GameModeFSM : MonoBehaviour
 	}
 		
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
-		touchPanel = GameObject.Find("TouchPanel").GetComponent<SimpleTouchAreaButton>();
+		pendulumHit = GameObject.Find("Pendulum").GetComponent<PendulumHit>();
+
 		start = GameObject.Find("Start").GetComponent<SimpleTouchAreaButton>();
 		quitToMain = GameObject.Find("QuitToMain").GetComponent<SimpleTouchAreaButton>();
 
@@ -68,6 +73,8 @@ public class GameModeFSM : MonoBehaviour
 
 	public void MainMenuState ()
 	{
+		pendulumHit.metronomeController.speed = 0f;
+
 		if (start.CanAccessButtonArea())
 		{
 			UIController.SetTrigger("PlayTriggered");
@@ -85,6 +92,8 @@ public class GameModeFSM : MonoBehaviour
 
 	public void PlayGameState ()
 	{
+		pendulumHit.metronomeController.speed = 0f;
+
 		if (quitToMain.CanAccessButtonArea())
 		{
 			UIController.SetTrigger("QuitTriggered");
