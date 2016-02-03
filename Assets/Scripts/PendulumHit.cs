@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PendulumHit : MonoBehaviour 
@@ -9,7 +10,7 @@ public class PendulumHit : MonoBehaviour
 	private BoxCollider2D perfectHitCollider;
 	private BoxCollider2D pendulumCollider;
 
-	[HideInInspector]	public Animator metronomeController;
+	public Animator metronomeController;
 
 	private string areaHit;
 
@@ -24,7 +25,7 @@ public class PendulumHit : MonoBehaviour
 		perfectHitCollider = GameObject.Find("PerfectHit").GetComponent<BoxCollider2D>();
 		pendulumCollider = GameObject.Find("Pendulum").GetComponent<BoxCollider2D>();
 
-		metronomeController = GameObject.Find("Metronome").GetComponent<Animator>();
+//		metronomeController = GameObject.Find("Metronome").GetComponent<Animator>();
 	}
 
 	public void PendulumHitCheck()

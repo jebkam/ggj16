@@ -11,8 +11,6 @@ public class GameModeFSM : MonoBehaviour
 	private SimpleTouchAreaButton start;
 	private SimpleTouchAreaButton quitToMain;
 
-	private Metronome metronome;
-
 	private Animator UIController;
 
 
