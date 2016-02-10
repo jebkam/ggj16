@@ -8,17 +8,19 @@ public class ReadingActions : MonoBehaviour
 {
 	private ActionsInput actionsInput;
 
-	public int actionsMade = 0;
+	private System.Random randomAction = new System.Random();
 
 	private Animator actionsAnim;
+	private Animator UIAnim;
 
 	public List<int> readingPattern = new List<int>();
 
-	private System.Random randomAction = new System.Random();
+	public int actionsMade = 0;
 
 	public bool isReading = false;
 
-	private Animator UIAnim;
+	public float waitTimeBetweenActions = 1.2f;
+
 
 	public IEnumerator ReadActions()
 	{
@@ -26,35 +28,35 @@ public class ReadingActions : MonoBehaviour
 
 		foreach (int action in readingPattern)
 		{
+			yield return new WaitForSeconds (waitTimeBetweenActions);
+
 			switch (action)
 			{
 				case 0:
+					actionsInput.nextButton = 0;
 					Debug.Log("Ask for a dance");
 					actionsAnim.SetTrigger("Dance");
-				//	yield return new WaitForSeconds(2f);
 						break;
 
 				case 1:
+					actionsInput.nextButton = 1;
 					Debug.Log("Ask for a nuzzle");
 					actionsAnim.SetTrigger("Nuzzle");
-
-				//	yield return new WaitForSeconds (2f);
-					break;
+						break;
 
 				case 2:
+					actionsInput.nextButton = 2;
 					Debug.Log("Ask for a pose");
 					actionsAnim.SetTrigger("Pose");
-	//				yield return new WaitForSeconds (2f);
 					break;
 
 				case 3:
+					actionsInput.nextButton = 3;
 					Debug.Log("Ask for a song");
 					actionsAnim.SetTrigger("Sing");
-	//				yield return new WaitForSeconds (2f);
 					break;
 			}
 
-			yield return new WaitForSeconds (2f);
 		}
 
 		isReading = false;
@@ -81,10 +83,10 @@ public class ReadingActions : MonoBehaviour
 		UIAnim = GameObject.Find("UI").GetComponent<Animator>();
 		UIAnim.SetBool("isReading",isReading);
 		actionsAnim = GameObject.Find("ActionsCanvas").GetComponent<Animator>();
-		actionsAnim.SetBool("isDancing", actionsInput.isDancing);
-		actionsAnim.SetBool("isNuzzling", actionsInput.isNuzzling);
-		actionsAnim.SetBool("isPosing", actionsInput.isPosing);
-		actionsAnim.SetBool("isSinging",  actionsInput.isSinging);
+//		actionsAnim.SetBool("isDancing", actionsInput.isDancing);
+//		actionsAnim.SetBool("isNuzzling", actionsInput.isNuzzling);
+//		actionsAnim.SetBool("isPosing", actionsInput.isPosing);
+//		actionsAnim.SetBool("isSinging",  actionsInput.isSinging);
 
 	}
 
