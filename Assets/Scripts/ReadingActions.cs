@@ -33,25 +33,25 @@ public class ReadingActions : MonoBehaviour
 			switch (action)
 			{
 				case 0:
-					actionsInput.nextButton = 0;
+//					actionsInput.nextButton = 0;
 					Debug.Log("Ask for a dance");
 					actionsAnim.SetTrigger("Dance");
 						break;
 
 				case 1:
-					actionsInput.nextButton = 1;
+//					actionsInput.nextButton = 1;
 					Debug.Log("Ask for a nuzzle");
 					actionsAnim.SetTrigger("Nuzzle");
 						break;
 
 				case 2:
-					actionsInput.nextButton = 2;
+//					actionsInput.nextButton = 2;
 					Debug.Log("Ask for a pose");
 					actionsAnim.SetTrigger("Pose");
 					break;
 
 				case 3:
-					actionsInput.nextButton = 3;
+//					actionsInput.nextButton = 3;
 					Debug.Log("Ask for a song");
 					actionsAnim.SetTrigger("Sing");
 					break;

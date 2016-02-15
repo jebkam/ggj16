@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class ActionsInput : MonoBehaviour 
 {
-	[SerializeField] public int nextButton;
+	//public int nextButton;
 
 	/// <summary>
 	/// 

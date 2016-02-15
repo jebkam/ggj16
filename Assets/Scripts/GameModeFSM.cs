@@ -6,12 +6,8 @@ using System.Collections.Generic;
 
 public class GameModeFSM : MonoBehaviour 
 {
-	private PendulumHit pendulumHit;
-
-	private SimpleTouchAreaButton start;
-	private SimpleTouchAreaButton quitToMain;
-
-	private Animator UIController;
+	
+	//public AudioSource tapSound;
 
 
 
@@ -37,13 +33,9 @@ public class GameModeFSM : MonoBehaviour
 	// Use this for initialization
 	void Awake () 
 	{
-		pendulumHit = GameObject.Find("Pendulum").GetComponent<PendulumHit>();
-
-		start = GameObject.Find("Start").GetComponent<SimpleTouchAreaButton>();
-		quitToMain = GameObject.Find("QuitToMain").GetComponent<SimpleTouchAreaButton>();
-
-		UIController = GameObject.Find("UI").GetComponent<Animator>();
-
+		////
+	//	tapSound = GameObject.Find("tapSound").GetComponent<AudioSource>();
+		////
 
 		fsm.Add (GameStates.MainMenu, MainMenuState);
 		fsm.Add (GameStates.PlayGame, PlayGameState);
@@ -71,13 +63,10 @@ public class GameModeFSM : MonoBehaviour
 
 	public void MainMenuState ()
 	{
-		pendulumHit.metronomeController.speed = 0f;
+		SetState(GameStates.MainMenu);
 
-		if (start.CanAccessButtonArea())
-		{
-			UIController.SetTrigger("PlayTriggered");
-			SetState(GameStates.PlayGame);
-		}
+		print (currentState);
+
 	}
 
 ///////////////////////////////////
@@ -90,13 +79,10 @@ public class GameModeFSM : MonoBehaviour
 
 	public void PlayGameState ()
 	{
-		pendulumHit.metronomeController.speed = 0f;
+		SetState(GameStates.PlayGame);
 
-		if (quitToMain.CanAccessButtonArea())
-		{
-			UIController.SetTrigger("QuitTriggered");
-			SetState(GameStates.MainMenu);
-		}
+		print(currentState);
+
 		
 	}
 

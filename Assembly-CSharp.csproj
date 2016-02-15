@@ -45,11 +45,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ActionsInput.cs" />
+     <Compile Include="Assets\Scripts\ActionsInput.cs" />
      <Compile Include="Assets\Scripts\GameModeFSM.cs" />
+     <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\PendulumHit.cs" />
      <Compile Include="Assets\Scripts\ReadingActions.cs" />
      <Compile Include="Assets\Scripts\SimpleTouchAreaButton.cs" />
+     <Compile Include="Assets\Scripts\SplashPage.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
